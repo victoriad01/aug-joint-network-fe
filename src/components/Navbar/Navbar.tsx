@@ -15,7 +15,9 @@ const Navbar = () => {
           </p>
         </div>
         <div className='hidden md:flex justify-between items-center gap-[32px] md:text-[12px] lg:text-[14px] text-[rgba(0.094, 0.078, 0.122, 0.9)]'>
-          <p className='cursor-pointer'>Home</p>
+          <p className='cursor-pointer' onClick={() => navigate('/')}>
+            Home
+          </p>
           <p className='cursor-pointer'>About</p>
           <p className='cursor-pointer'>Missions</p>
           <p
@@ -40,7 +42,10 @@ const Navbar = () => {
         <div className='block md:hidden justify-between items-center gap-[32px] text-center md:text-[12px] lg:text-[14px] text-[rgba(0.094, 0.078, 0.122, 0.9)] px-8'>
           <p
             className='cursor-pointer mb-2'
-            onClick={() => setShowMobileNav(false)}
+            onClick={() => {
+              navigate('/')
+              setShowMobileNav(false)
+            }}
           >
             Home
           </p>
