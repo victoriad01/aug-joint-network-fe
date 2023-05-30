@@ -1,0 +1,26 @@
+.pray {
+  width: 75%;
+  text-align: center;
+  cursor: pointer;
+  color: white;
+  border-radius: 6px;
+  background-color: #9a4797;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-left: 12px;
+
+  /* padding-right: 12px text-center px-[24px] py-[12px] bg-[#9A4797] text-[white]
+    rounded-md my-[24px]; */
+}
+
+.praying {
+  width: 75%;
+  text-align: center;
+  cursor: pointer;
+  color: white;
+  border-radius: 6px;
+  background-color: #aeadb1;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-left: 12px;
+}
