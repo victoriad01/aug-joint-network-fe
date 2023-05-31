@@ -1,20 +1,33 @@
 import { useEffect, useState } from 'react'
+import { Popup } from '../Homepage/Popup/Popup'
 
 export const GenPrayer = () => {
   const [welcome, setWelcome] = useState(true)
-
   const [praying, setPraying] = useState(false)
-
+  const [prayPage, setPrayPage] = useState(false)
   const [counting, setCounting] = useState(false)
-
   const [countdown, setCountdown] = useState(60)
+  const [popUp, setPopUp] = useState(false)
 
   useEffect(() => {
     if (countdown === 0) {
       setPraying(false)
+      setPrayPage(false)
       setCounting(false)
+      setWelcome(false)
+      setPopUp(true)
     }
   }, [countdown])
+
+  useEffect(() => {
+    if (popUp) {
+      // setPopUp(true)
+      setPraying(false)
+      setPrayPage(false)
+      // alert('Pray again!')
+      console.log('Yes! We made it.')
+    }
+  }, [popUp])
 
   useEffect(() => {
     // Start the countdown
@@ -61,13 +74,19 @@ export const GenPrayer = () => {
             someone
           </p>
           <button
-            onClick={() => setWelcome(false)}
-            className='w-full cursor-pointer px-[24px] py-[12px] bg-[#9A4797] text-[white] rounded-md my-[42px]'
+            onClick={() => {
+              setWelcome(false)
+              setPrayPage(true)
+            }}
+            className='w-full cursor-pointer px-[24px] py-[12px] bg-[#9A4797] text-[white] rounded-md my-[42px] font-EuclidMedium shadow-md'
           >
             Proceed
           </button>
         </div>
       ) : (
+        ''
+      )}
+      {prayPage ? (
         <div className='mx-[24px] md:mx-[160px] lg:mx-[460px] mt-[60px]'>
           <p className='text-center text-[56px] font-EuclidMedium leading-[67.2px]'>
             {formatCountdown(countdown)}
@@ -78,7 +97,7 @@ export const GenPrayer = () => {
               “Read the prayer request before clicking
               <span className='font-EuclidMedium px-1'>Start Praying</span>”
             </p>
-            <p className='h-auto w-full bg-[#9A4797] text-[white] p-6 rounded-md my-4'>
+            <p className='h-auto w-full bg-[#FFF6FF] text-[#9A4797] border-[1px] border-[#9A4797] p-6 rounded-md my-4 text-center'>
               Lorem ipsum dolor sit amet consectetur. Facilisi in aliquet
               elementum sapien risus fringilla turpis. Est enim consectetur arcu
               facilisi nunc elit turpis. Massa scelerisque habitasse consectetur
@@ -86,7 +105,7 @@ export const GenPrayer = () => {
             </p>
           </div>
 
-          <div className='flex justify-center items-center'>
+          <div className='flex justify-center items-center font-EuclidMedium'>
             <button
               onClick={handlePray}
               className={praying ? 'praying' : 'pray'}
@@ -96,7 +115,11 @@ export const GenPrayer = () => {
             </button>
           </div>
         </div>
+      ) : (
+        ''
       )}
+
+      {popUp && countdown === 0 ? <Popup setPrayPage={setPrayPage} /> : ''}
     </div>
   )
 }

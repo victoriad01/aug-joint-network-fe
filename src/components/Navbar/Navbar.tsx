@@ -10,7 +10,7 @@ const Navbar = () => {
     <div>
       <div className='text- [#18141F] px-[16px] lg:px-[128px] py-[24px] lg:py-[48px] flex justify-between items-center font-EuclidMedium '>
         <div onClick={() => navigate('/')}>
-          <p className='cursor-pointer md:text-[18px] lg:text-[24px]'>
+          <p className='cursor-pointer text-[18px] lg:text-[24px]'>
             Joint Prayer Network
           </p>
         </div>
@@ -26,7 +26,7 @@ const Navbar = () => {
           >
             1 Minute Prayer
           </p>
-          <p className='cursor-pointer px-[12px] py-[7px] bg-[#9A4797] text-[white] rounded-md'>
+          <p className='cursor-pointer px-[12px] py-[7px] bg-[#9A4797] text-[white] rounded-md shadow-sm'>
             Become an Intercessor
           </p>
         </div>
@@ -34,7 +34,7 @@ const Navbar = () => {
           className='flex md:hidden'
           onClick={() => setShowMobileNav(!showMobileNav)}
         >
-          <img src={MenuIcon} alt='menu' />
+          <img src={MenuIcon} alt='menu' className='h-[35px]' />
         </div>
       </div>
 
