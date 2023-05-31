@@ -119,7 +119,11 @@ export const GenPrayer = () => {
         ''
       )}
 
-      {popUp && countdown === 0 ? <Popup setPrayPage={setPrayPage} /> : ''}
+      {popUp && countdown === 0 ? (
+        <Popup setPopUp={setPopUp} setPrayPage={setPrayPage} />
+      ) : (
+        ''
+      )}
     </div>
   )
 }
