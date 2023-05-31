@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import { Homepage } from './pages/Homepage/Homepage'
 import Navandfooter from './components/NavandFooter/Navandfooter'
 import { GenPrayer } from './pages/PrayerGenerator/GenPrayer'
+import { Requestprayer } from './pages/RequestPrayer/Requestprayer'
 
 function App() {
   return (
@@ -22,6 +23,14 @@ function App() {
             element={
               <Navandfooter>
                 <GenPrayer />
+              </Navandfooter>
+            }
+          />
+          <Route
+            path='/reqprayer'
+            element={
+              <Navandfooter>
+                <Requestprayer />
               </Navandfooter>
             }
           />

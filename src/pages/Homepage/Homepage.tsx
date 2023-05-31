@@ -19,7 +19,10 @@ export const Homepage = () => {
           and giving of thanks, be made for all men). We would be happy to pray
           with you.
         </p>
-        <button className='cursor-pointer px-[24px] py-[12px] bg-[#9A4797] text-[white] rounded-md mb-[74px] shadow-md'>
+        <button
+          onClick={() => navigate('/reqprayer')}
+          className='cursor-pointer px-[24px] py-[12px] bg-[#9A4797] text-[white] rounded-md mb-[74px] shadow-md'
+        >
           Submit Prayers
         </button>
       </div>
@@ -36,6 +39,7 @@ export const Homepage = () => {
           <button
             className='my-[30px] cursor-pointer px-[24px] py-[12px] bg-[#9A4797] text-[white] rounded-md mb-[74px] shadow-md
           '
+            onClick={() => navigate('/reqprayer')}
           >
             Submit Prayers
           </button>

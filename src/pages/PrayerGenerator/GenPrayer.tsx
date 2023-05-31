@@ -21,11 +21,8 @@ export const GenPrayer = () => {
 
   useEffect(() => {
     if (popUp) {
-      // setPopUp(true)
       setPraying(false)
       setPrayPage(false)
-      // alert('Pray again!')
-      console.log('Yes! We made it.')
     }
   }, [popUp])
 
