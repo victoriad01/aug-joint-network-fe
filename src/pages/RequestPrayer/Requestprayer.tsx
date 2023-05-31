@@ -34,9 +34,11 @@ export const Requestprayer = () => {
       />
 
       <div className='w-full px-[24px] py-[12px] border-[1px] border-[#9A4797] text-[#9A4797] rounded-md my-[2px] font-EuclidMedium '>
-        <select className='w-full outline-none'>
+        <select className='w-full outline-none bg-white'>
           {options.map((n, i) => (
-            <option key={n}>{n}</option>
+            <option key={n} className=' bg-white'>
+              {n}
+            </option>
           ))}
         </select>
       </div>
