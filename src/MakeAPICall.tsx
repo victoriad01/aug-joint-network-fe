@@ -6,7 +6,7 @@ export const APICall = async (data: any, url: string, method: string) => {
   let response
   let e
 
-  let liveAPI = 'https://3.109.54.17/api'
+  let liveAPI = 'http://3.7.248.109/api/'
   // let localAPI = 'http://localhost:5000/api'
   try {
     let res = await axios({
