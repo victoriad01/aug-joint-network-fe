@@ -1,5 +1,6 @@
 import { ChangeEvent, useState } from 'react'
 import { Popuprequest } from './Popuprequest/Popuprequest'
+import { APICall } from '../../MakeAPICall'
 
 const optionData = [
   { id: 1, title: 'Soul Winning (Evangelism)' },
@@ -16,9 +17,34 @@ const optionData = [
 ]
 
 export const Requestprayer = () => {
+  let id = 'user_id ' + Math.random()
   const options = optionData.map((p, i) => p.title)
 
+  const [name, setName] = useState('')
   const [text, setText] = useState('')
+  const [selectedOption, setSelectedOption] = useState(
+    'Soul Winning (Evangelism)'
+  )
+
+  const [isError, setIsError] = useState(false)
+
+  const data = { name, category: selectedOption, d_request: text, user_id: id }
+
+  const handleSubmit = async () => {
+    const { response, e } = await APICall(data, '/request/submit', 'post')
+    if (response) {
+      setSubmit(false)
+      setSubmitted(true)
+    } else {
+      console.log(e)
+
+      setIsError(true)
+      setInterval(() => {
+        setIsError(false)
+      }, 3000)
+    }
+  }
+
   const [submit, setSubmit] = useState(true)
   const [submitted, setSubmitted] = useState(false)
 
@@ -26,11 +52,12 @@ export const Requestprayer = () => {
     setText(event.target.value)
   }
 
-  const [selectedValue, setSelectedValue] = useState('')
-
   const handleSelectChange = (event: ChangeEvent<HTMLSelectElement>) => {
-    setSelectedValue(event.target.value)
-    console.log(selectedValue)
+    setSelectedOption(event.target.value)
+  }
+
+  const handleNameChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setName(event.target.value)
   }
 
   return (
@@ -43,6 +70,7 @@ export const Requestprayer = () => {
           <input
             type='text'
             placeholder='Name (optional)'
+            onChange={handleNameChange}
             className='w-full px-[24px] py-[12px] border-[1px] border-[#9A4797] text-[#9A4797] rounded-md my-[42px] font-EuclidMedium '
           />
 
@@ -50,7 +78,7 @@ export const Requestprayer = () => {
             <select
               className='w-full outline-none bg-white'
               onChange={handleSelectChange}
-              value={selectedValue}
+              value={selectedOption}
             >
               {options.map((n, i) => (
                 <option key={n} value={n} className=' bg-white'>
@@ -64,15 +92,21 @@ export const Requestprayer = () => {
             value={text}
             onChange={handleTextChange}
             placeholder='Enter your prayer request here'
-            className='h-[150px] w-full px-[24px] py-[12px] border-[1px] border-[#9A4797] text-[#9A4797] rounded-md my-[42px] font-EuclidMedium outline-none text-justify'
+            className='h-[150px] w-full px-[24px] py-[12px] border-[1px] border-[#9A4797] text-[#9A4797] rounded-md my-[42px] font-EuclidMedium outline-none text-left'
           />
+
+          {isError ? (
+            <p className='text[10px] text-[red] text-justify'>
+              Something went wrong! Ensure you filled the required field and
+              choose a category.
+            </p>
+          ) : (
+            ''
+          )}
           <button
-            onClick={() => {
-              setSubmit(false)
-              setSubmitted(true)
-            }}
+            onClick={handleSubmit}
             className='w-full cursor-pointer px-[24px] py-[12px] bg-[#9A4797] text-[white] rounded-md my-[12px] font-EuclidMedium shadow-md'
-            disabled={!text && !selectedValue}
+            disabled={!text && !selectedOption && isError}
           >
             Submit
           </button>

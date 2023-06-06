@@ -24,7 +24,7 @@ export const Popuprequest = ({ setSubmit, setSubmitted }: PopupProps) => {
             setSubmitted(false)
           }}
         >
-          <button className='my-[16px] md:my-[30px] w-3/4 cursor-pointer px-[24px] py-[12px] bg-[#9A4797] text-[white] rounded-md mb-[2px] font-EuclidMedium shadow-md'>
+          <button className='my-[16px] md:my-[30px] w-3/4 cursor-pointer px-[6px] py-[12px] bg-[#9A4797] text-[white] rounded-md mb-[2px] font-EuclidMedium shadow-md text-[14px] md:text-[16px]'>
             Submit New Prayer
           </button>
         </div>

@@ -6,6 +6,9 @@ import { useNavigate } from 'react-router-dom'
 
 export const Homepage = () => {
   const navigate = useNavigate()
+
+ 
+
   return (
     <div className=' font-EuclidMedium w-full mt-[90px] md:mt-[115px] '>
       <div className='text-center mx-[24px] md:mx-[54px] lg:mx-[340px]'>

@@ -1,13 +1,30 @@
 import { useEffect, useState } from 'react'
 import { Popup } from '../Homepage/Popup/Popup'
+import { APICall } from '../../MakeAPICall'
 
 export const GenPrayer = () => {
+  const [prayer, setPrayer] = useState('')
+
   const [welcome, setWelcome] = useState(true)
   const [praying, setPraying] = useState(false)
   const [prayPage, setPrayPage] = useState(false)
   const [counting, setCounting] = useState(false)
   const [countdown, setCountdown] = useState(60)
   const [popUp, setPopUp] = useState(false)
+
+  const handleClick = async () => {
+    let { response, e } = await APICall({}, '/request/random', 'get')
+    if (response) {
+      console.log(response)
+      setPrayer(response)
+    } else {
+      console.log(e)
+    }
+  }
+
+  useEffect(() => {
+    handleClick()
+  }, [prayPage])
 
   useEffect(() => {
     if (countdown === 0) {
@@ -95,10 +112,7 @@ export const GenPrayer = () => {
               <span className='font-EuclidMedium px-1'>Start Praying</span>”
             </p>
             <p className='h-auto w-full bg-[#FFF6FF] text-[#9A4797] border-[1px] border-[#9A4797] p-6 rounded-md my-4 text-center'>
-              Lorem ipsum dolor sit amet consectetur. Facilisi in aliquet
-              elementum sapien risus fringilla turpis. Est enim consectetur arcu
-              facilisi nunc elit turpis. Massa scelerisque habitasse consectetur
-              dolor ut eget non et. Arcu ultrices pellentesque sit mi at.
+              {prayer}
             </p>
           </div>
 
