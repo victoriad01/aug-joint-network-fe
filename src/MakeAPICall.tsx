@@ -6,7 +6,7 @@ export const APICall = async (data: any, url: string, method: string) => {
   let response
   let e
 
-  let liveAPI = 'http://jointprayer.org/api'
+  let liveAPI = 'https://jointprayer.org/api'
   // let localAPI = 'https://localhost:3443/api'
   try {
     let res = await axios({
