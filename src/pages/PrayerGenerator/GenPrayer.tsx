@@ -15,7 +15,6 @@ export const GenPrayer = () => {
   const handleClick = async () => {
     let { response, e } = await APICall({}, '/request/random', 'get')
     if (response) {
-      console.log(response)
       setPrayer(response)
     } else {
       console.log(e)
