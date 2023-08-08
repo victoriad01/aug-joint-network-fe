@@ -9,10 +9,11 @@ export const APICall = async (data: any, url: string, method: string) => {
   let localAPI = 'http://localhost:80/api/v1'
 
   let liveAPI = 'http://65.0.161.243/api/v1'
+  
   try {
     let res = await axios({
       method: method,
-      url: localAPI + url,
+      url: liveAPI + url,
       headers: {
         Authorization: 'Bearer ' + token,
       },
